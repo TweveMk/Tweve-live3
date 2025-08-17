@@ -1,0 +1,128 @@
+:root {
+  --bg: #0e0e0e;
+  --card: #161616;
+  --text: #f5f5f5;
+  --muted: #b7b7b7;
+  --accent: #ff2d2d;
+  --highlight: #ff4040;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+}
+
+.player-wrap {
+  width: min(96vw, 980px);
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  background: #000;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+.live-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 6px var(--accent);
+  animation: pulse 1.2s infinite alternate;
+  z-index: 10;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+}
+
+@keyframes pulse {
+  from { text-shadow: 0 0 6px var(--accent); }
+  to { text-shadow: 0 0 14px var(--accent); }
+}
+
+.panel {
+  width: min(96vw, 980px);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+.panel h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ch {
+  background: #1f1f1f;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.ch:hover {
+  background: var(--highlight);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(255,64,64,.5);
+}
+
+.ch-name {
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.ch-tag {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.shaka-current-time,
+.shaka-duration,
+.shaka-time-container,
+.shaka-seek-bar-container,
+.shaka-seek-bar,
+.shaka-time-divider {
+  display: none !important;
+}
